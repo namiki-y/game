@@ -1,0 +1,68 @@
+.record {
+  height: 50px;
+  width: 600px;
+  margin: auto;
+}
+
+#highscore {
+  width: 60%;
+  height: 50px;
+  float: left;
+  text-align: center;
+}
+
+#boss {
+  width: 40%;
+  height: 50px;
+  float: left;
+  text-align: center;
+}
+
+.button {
+  display: none;
+  float: none;
+}
+
+@media screen and (max-width:599px) {
+#myCanvas {
+  width: 100%;
+}
+
+.record {
+  width: 100%;
+  font-size: 14px;
+}
+
+.button {
+  display: block;
+}
+
+.move {
+  width: 50%;
+  height: 120px;
+  float:left;
+}
+
+.ctrl {
+  width: 50%;
+  height: 120px;
+  float: left;
+  padding-top: 80px;
+}
+
+#movebutton {
+  background: gray;
+  width: 110px;
+  height: 110px;
+  margin: auto;
+  border-radius: 75px;
+}
+
+#ctrlbutton {
+  background: gray;
+  width: 100px;
+  height: 80px;
+  margin: auto;
+  margin-top: 10px;
+  border-radius: 30px;
+}
