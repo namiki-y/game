@@ -94,6 +94,7 @@ class Enemy extends CharaBase {
       sound0.play();
       jiki.life--;
       if(jiki.life == 0)gameend();
+      tamakazu=1;
       jiki.damage = 60;
       jiki.flag = 10;
       this.kill = true;
