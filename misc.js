@@ -4,7 +4,7 @@
 
 //ステージ
 var stage;
-var enemypar = 50;
+var enemypar = 60;
 
 //ランダム
 function rand(min,max){
