@@ -255,8 +255,8 @@ function gameend(){
   game = setInterval(gameOver,gameSpeed);
   document.getElementById("myCanvas").addEventListener('click',openstart);
 
-  if(score>highscore)localStorage.setItem("highScore",score);
-  if(bossgekihaflag)localStorage.setItem("bossGekiha",true);
+  if(score>highscore)localStorage.setItem("highScore-ysgame01",score);
+  if(bossgekihaflag)localStorage.setItem("bossGekiha-ysgame01",true);
 }
 
 //スタート画面表示
@@ -268,8 +268,8 @@ function openstart(){
   game = setInterval(start,gameSpeed);
 
   //記録
-  highscore = Number(localStorage.getItem("highScore"));
-  bossgekiha = localStorage.getItem("bossGekiha");
+  highscore = Number(localStorage.getItem("highScore-ysgame01"));
+  bossgekiha = localStorage.getItem("bossGekiha-ysgame01");
 
   document.getElementById('highscore').innerHTML = "HIGHSCORE：" + highscore.toLocaleString();
   if(bossgekiha)document.getElementById('boss').innerHTML = "BOSS撃破";
