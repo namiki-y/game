@@ -399,7 +399,7 @@ var highscore;
 //ステージ移行
 function stageikou(){
   enemypar-=5;
-  if(enemypar==25){
+  if(enemypar==35){
     bossflag=true;
     bosssen=true;
   }
