@@ -49,7 +49,7 @@ class Enemy extends CharaBase {
         enemytama.push(new Enemytama(this.x - (8<<8),this.y +(this.h/2<<8),-200,1000))
         enemytama.push(new Enemytama(this.x + (8<<8),this.y +(this.h/2<<8),200,1000))
       }
-      this.reload = 30;
+      this.reload = 40;
     }
     else if (this.reload==0&&this.enemytype==6) {
       var an,dx,dy;
