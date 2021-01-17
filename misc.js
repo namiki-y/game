@@ -243,12 +243,13 @@ function gamestart(){
   bgm.play();
   document.getElementById("myCanvas").removeEventListener('click',gamestart);
   game = setInterval(gameloop,gameSpeed);
-  setTimeout(stage0,30000);
+  stage = setInterval(stageikou,30000);
 }
 
 //ゲーム終了
 function gameend(){
   clearInterval(game);
+  clearInterval(stage);
   bgm.pause();
   bgm.currentTime = 0;
   init();
@@ -342,7 +343,6 @@ function gameinit(){
   bossflag = false;
   tamakazu = 1;
   bosssen=false;
-  clearTimeout(stage);
 }
 
 //スマホ対応
@@ -397,28 +397,10 @@ idoubutton.addEventListener("touchend",idoustop);
 var highscore;
 
 //ステージ移行
-function stage0(){
-  stage = setTimeout(stage1,30000);
-  enemypar=45;
-}
-
-function stage1(){
-  stage = setTimeout(stage2,45000);
-  enemypar=40;
-}
-
-function stage2(){
-  stage = setTimeout(stage3,45000);
-  enemypar=35;
-}
-
-function stage3(){
-  stage = setTimeout(stage4,45000);
-  enemypar=30;
-}
-
-function stage4(){
-  bossflag=true;
-  bosssen=true;
-  enemypar=25;
+function stageikou(){
+  enemypar-=5;
+  if(enemypar==25){
+    bossflag=true;
+    bosssen=true;
+  }
 }
