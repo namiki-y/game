@@ -335,7 +335,7 @@ function gameinit(){
   enemytama =[];
   score =0;
   exp = [];
-  enemypar = 50;
+  enemypar = 60;
   delete jiki;
   jiki = new Jiki;
   boss = [];
