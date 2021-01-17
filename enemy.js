@@ -132,14 +132,14 @@ class Boss extends CharaBase {
       var y2=(Math.sin(an)*150)<<8;
       enemytama.push(new Enemytama(this.x+x2 ,this.y+y2,dx,dy,30))
       this.dr+=8;
-      if(this.dr>=210)this.dr=-30;
+      if(this.dr>=220)this.dr=-40;
     }
 
     if(this.bosslife<this.mbosslife/2){
       var c = this.count%300;
-      if(c/10<4 && c%10==0){
+      if(c/10<3 && c%10==0){
         var an,dx,dy;
-        an=(90+45-c/10*30)*Math.PI/180;
+        an=(90+30-c/10*45)*Math.PI/180;
         dx=Math.cos(an)*300;
         dy=Math.sin(an)*300;
         var x2=(Math.cos(an)*150)<<8;
