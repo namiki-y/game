@@ -243,7 +243,7 @@ function gamestart(){
   bgm.play();
   document.getElementById("myCanvas").removeEventListener('click',gamestart);
   game = setInterval(gameloop,gameSpeed);
-  setTimeout(stage4,3000);
+  setTimeout(stage0,30000);
 }
 
 //ゲーム終了
