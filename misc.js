@@ -2,6 +2,17 @@
 //misc.js その他
 //
 
+//ブラウザ判別
+var userAgent = window.navigator.userAgent.toLowerCase();
+
+if(userAgent.indexOf('line') != -1) {
+  document.getElementById('myCanvas').style.display="none";
+  document.getElementById('record').style.display="none";
+  document.getElementById('line').style.display="block";
+}else{
+  document.getElementById('line').style.display="none";
+}
+
 //ステージ
 var stage;
 var enemypar = 60;
