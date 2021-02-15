@@ -244,6 +244,7 @@ function gamestart(){
   document.getElementById("myCanvas").removeEventListener('click',gamestart);
   game = setInterval(gameloop,gameSpeed);
   stage = setInterval(stageikou,30000);
+　document.addEventListener("touchmove", mobile_no_scroll, { passive: false });
 }
 
 //ゲーム終了
