@@ -1,3 +1,8 @@
+#line {
+  width: 90%;
+  margin: auto;
+}
+
 .record {
   height: 50px;
   width: 600px;
@@ -35,6 +40,8 @@
 
 .button {
   display: block;
+  width: 50%
+  float:left;
 }
 
 .move {
@@ -81,6 +88,7 @@
 
 .down{
 }
+
 #ctrlbutton {
   background: gray;
   width: 100px;
