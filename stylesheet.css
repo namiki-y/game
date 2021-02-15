@@ -56,8 +56,31 @@
   height: 110px;
   margin: auto;
   border-radius: 75px;
+  text-align: center;
 }
 
+#movebutton>*{
+  height: 33%;
+  font-size: 20px;
+  color: white;
+}
+
+.left,.right{
+  width: 50%;
+  float: left;
+}
+
+.left{
+  text-align: left;
+}
+
+
+.right{
+  text-align: right;
+}
+
+.down{
+}
 #ctrlbutton {
   background: gray;
   width: 100px;
@@ -65,4 +88,9 @@
   margin: auto;
   margin-top: 10px;
   border-radius: 30px;
+  text-align: center;
+  line-height:80px;
+  color: white;
+  font-size: 24px;
+}
 }
