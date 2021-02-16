@@ -237,6 +237,30 @@ function checkhit2(x1,y1,w1,h1, x2,y2,w2,h2){
 
 //ゲーム開始
 function gamestart(){
+  nanidoAria.style.display="none";
+  //難易度の設定
+  if (nanido==0) {
+    enemypar=80;
+    enemyTamaKankaku = 60;
+    bossTamaKankaku = 320;
+    bossTamaKankaku2=20;
+    bossEnemy=1;
+  }
+  else if (nanido==1) {
+    enemypar=70;
+    enemyTamaKankaku=50;
+    bossTamaKankaku = 270;
+    bossTamaKankaku2=15;
+    bossEnemy=2;
+  }
+  else{
+    enemypar=60;
+    enemyTamaKankaku=40;
+    bossTamaKankaku=220;
+    bossTamaKankaku2=8;
+    bossEnemy=3;
+  }
+
   clearInterval(game);
   bgm.volume = 0.5;
   bgm.loop = true;
@@ -255,31 +279,102 @@ function gameend(){
   bgm.currentTime = 0;
   init();
   game = setInterval(gameOver,gameSpeed);
-  document.getElementById("myCanvas").addEventListener('click',openstart);
+  canvas.addEventListener('click',openstart);
 
   if(score>highscore)localStorage.setItem("highScore-ysgame01",score);
-  if(bossgekihaflag)localStorage.setItem("bossGekiha-ysgame01",true);
 }
 
 //スタート画面表示
 function openstart(){
   clearInterval(game);
-  document.getElementById("myCanvas").removeEventListener('click',openstart);
+  canvas.removeEventListener('click',openstart);
   gameinit();
   init();
   game = setInterval(start,gameSpeed);
 
   //記録
   highscore = Number(localStorage.getItem("highScore-ysgame01"));
-  bossgekiha = localStorage.getItem("bossGekiha-ysgame01");
+  if(localStorage.getItem("bossGekiha-ysgame01-easy")) bossgekiha = "EASY CLEAR<br>";
+  if(localStorage.getItem("bossGekiha-ysgame01-normal")) bossgekiha += "NORMAL CLEAR<br>";
+  if(localStorage.getItem("bossGekiha-ysgame01-hard")) bossgekiha += "HARD CLEAR";
 
   document.getElementById('highscore').innerHTML = "HIGHSCORE：" + highscore.toLocaleString();
-  if(bossgekiha)document.getElementById('boss').innerHTML = "BOSS撃破";
+  document.getElementById('boss').innerHTML = bossgekiha;
+
+  if(nanido==0){
+    easy.style.display="block";
+    eDown.style.display="inline";
+  }
+  else if (nanido==1){
+    normal.style.display="block";
+    nDown.style.display="inline";
+  }
+  else {
+    hard.style.display="block";
+    hDown.style.display="inline";
+  }
+
+  nanidoAria.style.display="block";
+  nanidoAria.addEventListener("click",nanidoSentaku);
 }
+
+//難易度
+function nanidoSentaku(){
+  nanidoAria.removeEventListener("click",nanidoSentaku);
+  easy.style.display = normal.style.display = hard.style.display = "block";
+  eDown.style.display = nDown.style.display = hDown.style.display="none";
+
+  easy.addEventListener("click",easySelect);
+  normal.addEventListener("click",normalSelect);
+  hard.addEventListener("click",hardSelect);
+}
+
+function easySelect(){
+  nanido=0;
+
+  normal.style.display="none";
+  hard.style.display="none";
+  eDown.style.display ="inline";
+
+  easy.removeEventListener("click",easySelect);
+  normal.removeEventListener("click",normalSelect);
+  hard.removeEventListener("click",hardSelect);
+
+  setTimeout(function(){nanidoAria.addEventListener("click",nanidoSentaku);},500);
+}
+
+function normalSelect(){
+    nanido=1;
+
+    easy.style.display="none";
+    hard.style.display="none";
+    nDown.style.display ="inline";
+
+    easy.removeEventListener("click",easySelect);
+    normal.removeEventListener("click",normalSelect);
+    hard.removeEventListener("click",hardSelect);
+
+    setTimeout(function(){nanidoAria.addEventListener("click",nanidoSentaku);},500);
+}
+
+function hardSelect(){
+    nanido=2;
+
+    normal.style.display="none";
+    easy.style.display="none";
+    hDown.style.display ="inline";
+
+    easy.removeEventListener("click",easySelect);
+    normal.removeEventListener("click",normalSelect);
+    hard.removeEventListener("click",hardSelect);
+
+    setTimeout(function(){nanidoAria.addEventListener("click",nanidoSentaku);},500);
+}
+
 
 //スタート画面
 function start(){
-  document.getElementById("myCanvas").addEventListener('click',gamestart);
+  canvas.addEventListener('click',gamestart);
   ctx.font = "40px 'Impact'";
   ctx.fillStyle ="#00FFFF";
   ctx.fillRect(0,0,canvasWidth,canvasHeight);
@@ -327,6 +422,36 @@ function gameOver(){
   ctx.fillText(s,x,y);
 }
 
+//クリア
+function gameClear(){
+  clearInterval(game);
+  clearInterval(stage);
+  bgm.pause();
+  bgm.currentTime = 0;
+  init();
+  canvas.addEventListener('click',openstart);
+  game = setInterval(clearGamen,gameSpeed);
+
+  if(score>highscore)localStorage.setItem("highScore-ysgame01",score);
+  if(nanido == 0 && bossgekihaflag )localStorage.setItem("bossGekiha-ysgame01-easy",true);
+  else if (nanido == 1 && bossgekihaflag) localStorage.setItem("bossGekiha-ysgame01-normal",true);
+  else if (nanido == 2 && bossgekihaflag) localStorage.setItem("bossGekiha-ysgame01-hard",true);
+}
+
+function clearGamen(){
+  ctx.fillStyle="white";
+  ctx.fillRect(0,0,canvasWidth,canvasHeight);
+  ctx.drawImage(clearimg,0,0,canvasWidth,canvasHeight);
+
+  ctx.font = "60px 'Impact'";
+  ctx.fillStyle="black";
+  s = "score  "+score;
+  w = ctx.measureText(s).width;
+  x = canvasWidth/2 - w/2;
+  y =320;
+  ctx.fillText(s,x,y);
+}
+
 //初期化
 function gameinit(){
   star = [];
@@ -344,6 +469,7 @@ function gameinit(){
   bossflag = false;
   tamakazu = 1;
   bosssen=false;
+  stageCount=0;
 }
 
 //スマホ対応
@@ -396,12 +522,22 @@ idoubutton.addEventListener("touchmove",idou);
 idoubutton.addEventListener("touchend",idoustop);
 
 var highscore;
+var bossgekiha="";
 
 //ステージ移行
 function stageikou(){
   enemypar-=5;
-  if(enemypar==35){
+  stageCount++;
+  if(stageCount==5){
     bossflag=true;
     bosssen=true;
   }
+}
+
+function mobile_no_scroll(event) {
+    // ２本指での操作の場合
+    if (event.touches.length >= 2) {
+        // デフォルトの動作をさせない
+        event.preventDefault();
+    }
 }
