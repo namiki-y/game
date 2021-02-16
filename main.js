@@ -33,6 +33,19 @@ var bossflag = false;
 var boss =[];
 var itemkill;
 var bossgekihaflag;
+var nanido = 0;
+var nanidoAria = document.getElementById("nanido");
+var easy = document.getElementById("easy");
+var normal = document.getElementById("normal");
+var hard = document.getElementById("hard");
+var eDown = document.getElementById("e");
+var nDown = document.getElementById("n");
+var hDown = document.getElementById("h");
+var stageCount=0;
+var enemyTamaKankaku=40;
+var bossTamaKankaku=220;
+var bossTamaKankaku2=8;
+var bossEnemy=3;
 
 //メインループ
 function gameloop() {
