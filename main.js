@@ -63,7 +63,7 @@ if(bossflag)boss.push(new Boss((canvasWidth/2)<<8,0,0,200));
   //描画
   if (jiki.flag==0) {
     if(bosssen)ctx.fillStyle ="black";
-    else if(enemypar<=45)ctx.fillStyle ="#FF9933";
+    else if(stageCount>=3)ctx.fillStyle ="#FF9933";
     else ctx.fillStyle ="#00FFFF";
     ctx.fillRect(0,0,canvasWidth,canvasHeight);
     ctx.fillStyle ="green";
