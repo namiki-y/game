@@ -261,24 +261,27 @@ function gamestart(){
     bossEnemy=3;
   }
 
-  clearInterval(game);
+  //clearInterval(game);
+  cancelAnimationFrame(game);
   bgm.volume = 0.5;
   bgm.loop = true;
   bgm.play();
   document.getElementById("myCanvas").removeEventListener('click',gamestart);
-  game = setInterval(gameloop,gameSpeed);
+  //game = setInterval(gameloop,gameSpeed);
   stage = setInterval(stageikou,30000);
 　document.addEventListener("touchmove", mobile_no_scroll, { passive: false });
+gameloop();
 }
 
 //ゲーム終了
 function gameend(){
-  clearInterval(game);
+  //clearInterval(game);
+  cancelAnimationFrame(game);
   clearInterval(stage);
   bgm.pause();
   bgm.currentTime = 0;
   init();
-  game = setInterval(gameOver,gameSpeed);
+  game = requestAnimationFrame(gameOver);//setInterval(gameOver,gameSpeed);
   canvas.addEventListener('click',openstart);
 
   if(score>highscore)localStorage.setItem("highScore-ysgame01",score);
@@ -286,11 +289,12 @@ function gameend(){
 
 //スタート画面表示
 function openstart(){
-  clearInterval(game);
+  //clearInterval(game);
+  cancelAnimationFrame(game);
   canvas.removeEventListener('click',openstart);
   gameinit();
   init();
-  game = setInterval(start,gameSpeed);
+  game = requestAnimationFrame(start);//setInterval(start,gameSpeed);
 
   //記録
   highscore = Number(localStorage.getItem("highScore-ysgame01"));
@@ -424,13 +428,13 @@ function gameOver(){
 
 //クリア
 function gameClear(){
-  clearInterval(game);
+  cancelAnimationFrame(game);//clearInterval(game);
   clearInterval(stage);
   bgm.pause();
   bgm.currentTime = 0;
   init();
   canvas.addEventListener('click',openstart);
-  game = setInterval(clearGamen,gameSpeed);
+  game = requestAnimationFrame(clearGamen);//setInterval(clearGamen,gameSpeed);
 
   if(score>highscore)localStorage.setItem("highScore-ysgame01",score);
   if(nanido == 0 && bossgekihaflag )localStorage.setItem("bossGekiha-ysgame01-easy",true);
