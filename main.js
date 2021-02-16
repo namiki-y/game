@@ -122,4 +122,4 @@ if(bossflag)boss.push(new Boss((canvasWidth/2)<<8,0,0,200));
   }
 }
 
-img.onload = openstart();
+window.onload = openstart();
