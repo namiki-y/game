@@ -1,3 +1,23 @@
+.nanido{
+  width: 80%;
+  margin: auto;
+  text-align: center;
+}
+
+.nanido>*{
+  line-height: 40px;
+  display: none;
+  cursor: pointer;
+  -webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+
+#e,#n,#h {
+  display: none;
+}
+
 #line {
   width: 90%;
   margin: auto;
@@ -70,11 +90,17 @@
   height: 33%;
   font-size: 20px;
   color: white;
+  cursor: pointer;
+  -webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 }
 
 .left,.right{
   width: 50%;
   float: left;
+  display: inline-block;
 }
 
 .left{
@@ -87,6 +113,12 @@
 }
 
 .down{
+  float: none;
+  display: inline-block;
+}
+
+.down span{
+  vertical-align: -0.5em;
 }
 
 #ctrlbutton {
@@ -99,6 +131,11 @@
   text-align: center;
   line-height:80px;
   color: white;
-  font-size: 24px;
+  font-size: 20px;
+  cursor: pointer;
+  -webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
 }
 }
