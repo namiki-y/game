@@ -49,6 +49,7 @@ var bossEnemy=3;
 
 //メインループ
 function gameloop() {
+game = requestAnimationFrame(gameloop);
 if(bossflag)boss.push(new Boss((canvasWidth/2)<<8,0,0,200));
   //移動
   updateobj(star);
