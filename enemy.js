@@ -174,7 +174,7 @@ class Boss extends CharaBase {
       sound0.currentTime = 0.3;
       sound0.play();
       jiki.life--;
-      if(jiki.life == 0)gameend();
+      if(jiki.life == 0) gameend();
       tamakazu=1;
       jiki.damage = 60;
       jiki.flag = 10;
