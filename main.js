@@ -122,4 +122,25 @@ if(bossflag)boss.push(new Boss((canvasWidth/2)<<8,0,0,200));
   }
 }
 
-window.onload = openstart();
+var Loader = function(expectedCnt){
+  var cnt = 0;
+  return function(){
+    if(++cnt == expectedCnt){ openstart(); }
+  }
+};
+
+var loader = Loader(14);
+miseimg.onload = loader;
+ie1img.onload = loader;
+ie2img.onload = loader;
+kiimg.onload = loader;
+meimg.onload = loader;
+maskedimg.onload = loader;
+enimg.onload = loader;
+ensekiimg.onload = loader;
+enkushamiimg.onload = loader;
+tamaimg.onload = loader;
+enemytamaimg.onload = loader;
+item1img.onload = loader;
+item2img.onload = loader;
+clearimg.onload = loader;
