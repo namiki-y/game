@@ -1,3 +1,6 @@
+body{
+  touch-action:none;
+}
 .nanido{
   width: 80%;
   margin: auto;
