@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta charset="utf-8" />
     <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css" integrity="sha384-vSIIfh2YWi9wW0r9iZe7RJPrKwp6bG+s9QZMoITbCckVJqGCCRhc+ccxNcdpHuYu" crossorigin="anonymous">
     <link rel="shortcut icon" href="image/favicon.ico">
     <link rel="apple-touch-icon" href="image/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" type="image/png" href="image/android-touch-icon.png" sizes="192x192">
@@ -14,6 +15,11 @@
     </style>
 </head>
 <body>
+  <div class="nanido" id="nanido">
+      <p id="easy">EASY <i class="fas fa-angle-down" id="e"></i></p>
+      <p id="normal">NORMAL <i class="fas fa-angle-down" id="n"></i></p>
+      <p id="hard">HARD <i class="fas fa-angle-down" id="h"></i></p>
+  </div>
 <canvas id="myCanvas"></canvas>
 <div class="record">
   <div id="highscore"></div>
@@ -32,7 +38,7 @@
         →
       </div>
       <div class="down">
-        ↓
+        <span>↓</span>
       </div>
     </div>
   </div>
