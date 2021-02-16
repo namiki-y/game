@@ -108,6 +108,7 @@ class Tama extends CharaBase {
 
         item.push(new Item(boss[i].x,boss[i].y,0,0,100));
         bosssen=false;
+        setTimeout(gameClear,1000);
       }
     }
   }
